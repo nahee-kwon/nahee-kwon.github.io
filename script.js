@@ -4,7 +4,9 @@ function youtubeId(url) {
   return m ? m[1] : null;
 }
 
-document.querySelectorAll('.video').forEach(el => {
+function loadVideo(el) {
+  if (el.dataset.loaded) return;
+  el.dataset.loaded = '1';
   const id = youtubeId(el.dataset.youtube || '');
   if (!id) {
     el.innerHTML = '<div class="placeholder">유튜브 링크를 입력해주세요</div>';
@@ -12,8 +14,14 @@ document.querySelectorAll('.video').forEach(el => {
   }
   el.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="YouTube video"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>`;
-});
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+}
+
+// 다른 페이지로 넘어가면 재생 중인 영상 정지
+function stopVideo(el) {
+  const iframe = el.querySelector('iframe');
+  if (iframe) iframe.src = iframe.src;
+}
 
 // PDF → 페이지 바로 보이게 렌더링 (pdf.js)
 if (window.pdfjsLib) {
@@ -21,7 +29,9 @@ if (window.pdfjsLib) {
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 }
 
-document.querySelectorAll('.pdf').forEach(async el => {
+async function loadPdf(el) {
+  if (el.dataset.loaded) return;
+  el.dataset.loaded = '1';
   const src = el.dataset.src;
   if (!src) { el.remove(); return; }
   const fileName = el.dataset.download || src.split('/').pop();
@@ -61,7 +71,7 @@ document.querySelectorAll('.pdf').forEach(async el => {
       pages.innerHTML = `<div class="placeholder">PDF 파일을 찾을 수 없습니다 (${src})</div>`;
     }
   }
-});
+}
 
 // 메인 썸네일: 자동으로 순서대로 전환, 메뉴에 마우스를 올리면 해당 썸네일 표시
 const thumbLinks = [...document.querySelectorAll('.nav a[data-thumb]')];
@@ -105,13 +115,24 @@ if (showcase && thumbLinks.length) {
   start();
 }
 
-// 현재 보고 있는 섹션을 메뉴에 표시
+// 페이지 전환: 주소의 #project-a 등에 맞는 페이지만 표시 (없으면 홈)
+const pageEls = [...document.querySelectorAll('main section[id]')];
 const links = document.querySelectorAll('.nav a');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
-  });
-}, { rootMargin: '-40% 0px -55% 0px' });
 
-document.querySelectorAll('main section[id]').forEach(s => observer.observe(s));
+function route() {
+  const id = location.hash.slice(1);
+  const current = pageEls.find(p => p.id === id) || pageEls[0];
+
+  pageEls.forEach(p => {
+    if (p !== current && !p.hidden) p.querySelectorAll('.video').forEach(stopVideo);
+    p.hidden = p !== current;
+  });
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+
+  current.querySelectorAll('.video').forEach(loadVideo);
+  current.querySelectorAll('.pdf').forEach(loadPdf);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+window.addEventListener('hashchange', route);
+route();
