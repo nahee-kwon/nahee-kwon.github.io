@@ -92,18 +92,21 @@ main {
   flex: 1;
   min-width: 0;
   padding: 0 var(--gap);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* 메인 썸네일 */
 .home {
-  min-height: 100vh;
   /* 썸네일 상단 = '권나희' 글자 상단 (줄 간격 때문에 생기는 글자 위 빈 공간 8px 보정) */
-  padding: calc(var(--top) + 8px) 0 64px;
+  padding: calc(var(--top) + 8px) 0 0;
 }
-.showcase { display: block; }
+.showcase { display: block; container-type: inline-size; }
 .showcase-frame {
   position: relative;
-  aspect-ratio: 16 / 9;
+  /* 기본은 16:9, 화면 높이가 부족하면 아래 저작권 문구까지 한 화면에 들어오도록 높이만 줄임 */
+  height: min(56.25cqw, calc(100vh - 190px));
   overflow: hidden;
   background: var(--panel);
 }
@@ -192,7 +195,7 @@ main {
 }
 .mail:hover { border-color: var(--text); }
 
-.footer { padding: 40px 0; }
+.footer { margin-top: auto; padding: 20px 0; }
 
 /* ---------- 모바일 ---------- */
 @media (max-width: 860px) {
@@ -217,7 +220,9 @@ main {
   .nav a { font-size: 13px; }
 
   main { padding: 0 16px; }
-  .home { min-height: auto; padding: 32px 0 48px; }
+  main { min-height: auto; }
+  .home { padding: 32px 0 48px; }
+  .showcase-frame { height: 56.25cqw; }
   .showcase-caption { flex-direction: column; gap: 2px; margin-top: 14px; }
   .section { padding: 40px 0 56px; }
   .about-name span { display: block; margin: 4px 0 0; }
