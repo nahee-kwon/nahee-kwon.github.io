@@ -1,9 +1,25 @@
+/* 왼쪽 메뉴용 폰트: Presevka (눈누, 무료 웹폰트) */
+@font-face {
+  font-family: 'Presevka';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2610081905@presevka/presevka/Presevka-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Presevka';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2610081905@presevka/presevka/Presevka-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
 :root {
   --bg: #0b0b0b;
   --panel: #111111;
   --text: #f2f2f2;
   --muted: #8c8c8c;
   --line: #242424;
+  --mint: #78ffc9;    /* 메뉴 밑줄 */
+  --menu-font: "Presevka", "Pretendard", sans-serif;  /* 왼쪽 메뉴 영역 전체 */
   --sidebar-w: 320px;
   --page-w: 1920px;   /* 이보다 넓은 화면에서는 이 폭으로 가운데 정렬 */
   --top: 56px;        /* 메뉴 상단 여백 */
@@ -74,12 +90,22 @@ a { color: inherit; text-decoration: none; }
 }
 
 .logo { display: block; }
+.logo .name-ko {
+  font-family: var(--menu-font);
+  font-weight: 400;
+  letter-spacing: 0;
+  word-spacing: -0.3ch;   /* 띄어쓰기 간격을 원래의 0.7배로 */
+}
+.name-main { display: block; font-weight: 900; }
+.name-role, .name-sub { color: var(--muted); }  /* 메뉴와 같은 회색 */
 
 .nav { display: flex; flex-direction: column; gap: 16px; margin-top: 64px; }
 .nav a { align-self: flex-start; transition: color .2s; }
+.nav a, .side-mail { font-family: var(--menu-font); }
 .nav a:hover, .nav a.active { color: var(--text); }
 .nav a.active {
   text-decoration: underline;
+  text-decoration-color: var(--mint);
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
 }
@@ -214,7 +240,7 @@ main {
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
-  .name-ko { font-size: 15px; line-height: 1.35; }
+  .name-ko, .name-main { font-size: 15px; line-height: 1.35; }
   .side-mail { display: none; }
   .nav { flex-direction: row; gap: 14px; margin-top: 0; }
   .nav a { font-size: 13px; }
