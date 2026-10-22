@@ -95,6 +95,14 @@ function fitLogo() {
 document.fonts.ready.then(fitLogo);
 window.addEventListener('resize', fitLogo);
 
+// 프로젝트 페이지 태그: 맨 앞 '#'만 따로 감싸서 기울임 적용 (index.html에는 '#잠입'처럼 그대로 적으면 됨)
+document.querySelectorAll('.section .tags li').forEach(li => {
+  const text = li.textContent.trim();
+  if (!text.startsWith('#')) return;
+  li.innerHTML = '<span class="hash">#</span>';
+  li.append(text.slice(1));
+});
+
 // 메인 썸네일: 자동으로 순서대로 전환, 메뉴에 마우스를 올리면 해당 썸네일 표시
 const thumbLinks = [...document.querySelectorAll('.nav a[data-thumb]')];
 const showcase = document.querySelector('.showcase');
@@ -124,7 +132,8 @@ if (showcase && thumbLinks.length) {
     tags.innerHTML = '';
     (a.dataset.tags || '').split(',').filter(t => t.trim()).forEach(t => {
       const li = document.createElement('li');
-      li.textContent = '#' + t.trim();
+      li.innerHTML = '<span class="hash">#</span>';
+      li.append(t.trim());
       tags.appendChild(li);
     });
   }

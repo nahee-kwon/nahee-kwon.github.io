@@ -166,14 +166,14 @@ main {
 /* 태그가 없는 프로젝트로 넘어가도 높이가 출렁이지 않게 자리 확보 */
 .showcase-tags { min-height: 34px; margin-top: 12px; }
 
-/* 태그: 짙은 회색 알약 모양 + 연보라 기울임 글씨 */
+/* 태그: 짙은 회색 알약 모양 + 연보라 글씨 */
 .tags {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   font-family: var(--menu-font);
-  font-size: var(--fs-text);
+  font-size: calc(var(--fs-text) - 2px);  /* ✏️ 본문보다 2px 작게 (PC 16px) */
   line-height: 1.4;
 }
 .tags li {
@@ -181,8 +181,9 @@ main {
   border-radius: 999px;
   background: #262626;
   color: #9990b5;
-  font-style: italic;
 }
+/* '#' 기호만 기울임 + 뒤 글자와 살짝 띄움 (✏️ 0.15em: 띄어쓰기의 절반 정도) */
+.tags .hash { font-style: italic; margin-right: 0.15em; }
 .section .tags { margin-top: 16px; }
 
 .section {

@@ -7,7 +7,7 @@
   <meta name="description" content="권나희 포트폴리오">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <!-- ✏️ style.css / script.js 를 수정해서 올릴 때마다 v= 숫자를 하나씩 올리기 (브라우저 캐시 방지) -->
-  <link rel="stylesheet" href="style.css?v=24">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
 <div class="page">
@@ -20,8 +20,8 @@
     <!-- ✏️ data-thumb: 메인 화면 썸네일 / data-title: 썸네일 아래 제목
          data-tags: 썸네일 아래 태그 (쉼표로 구분, # 없이) -->
     <nav class="nav">
-      <a href="#project-a" data-thumb="files/thumb-a.jpg" data-title="[창작] Project Blackout" data-tags="잠입,슈팅,액션,어둠과_빛,현대,지하철역">PROJECT 01</a>
-      <a href="#project-b" data-thumb="files/thumb-b.jpg" data-title="[역기획 및 개선안 제시] Hogwarts Legacy - Spinner's Cavern">PROJECT 02</a>
+      <a href="#project-a" data-thumb="files/thumb-01.jpg" data-title="[창작] Project Blackout" data-tags="잠입,슈팅,3인칭,액션,어둠과_빛,현대,지하철역">PROJECT 01</a>
+      <a href="#project-b" data-thumb="files/thumb-02.jpg" data-title="[역기획 및 개선안 제시] Hogwarts Legacy - Spinner's Cavern" data-tags="호그와트_레거시,판타지,RPG,3인칭,동굴,원거리_전투">PROJECT 02</a>
       <a href="#about">ABOUT</a>
     </nav>
     <a class="side-mail" href="mailto:kwonnh169@gmail.com">kwonnh169@gmail.com</a>
@@ -48,12 +48,12 @@
       <h2 class="title">[창작] Project Blackout</h2>
       <!-- ✏️ 태그 (메뉴의 data-tags 와 같게 맞추기) -->
       <ul class="tags">
-        <li>#잠입</li><li>#슈팅</li><li>#액션</li><li>#어둠과_빛</li><li>#현대</li><li>#지하철역</li>
+        <li>#잠입</li><li>#슈팅</li><li>#3인칭</li><li>#액션</li><li>#어둠과_빛</li><li>#현대</li><li>#지하철역</li>
       </ul>
       <p class="desc">한밤의 정전으로 봉쇄된 환승역. 최하층의 차량 내부에서 깨어난 주인공 ‘K’는 조력자의 무전을 받고 순찰자를 피해 전원을 복구, 새벽빛을 받아 밝아진 역을 거슬러 올라 지상으로 탈출한다.</p>
 
       <!-- ✏️ 유튜브 주소를 그대로 붙여넣기 (youtu.be/..., youtube.com/watch?v=... 모두 가능) -->
-      <div class="video" data-youtube="https://youtu.be/PYbod2mB7O4"></div>
+      <div class="video" data-youtube="https://youtu.be/mhJwyw-_eXg"></div>
 
       <!-- ✏️ 프로젝트 정보 (항목 이름은 dt, 내용은 dd) -->
       <div class="details">
@@ -61,24 +61,27 @@
         <dl>
           <dt>장르</dt><dd>액션 어드벤처, TPS</dd>
           <dt>엔진</dt><dd>언리얼 엔진 5.8</dd>
-          <dt>맵 크기</dt><dd>100 x 50 (m)</dd>
+          <dt>맵 크기</dt><dd>150 x 65 (m)</dd>
           <dt>플레이 타임</dt><dd>8 ~ 10 (분)</dd>
-          <dt>제작 기간</dt><dd>26. 08 ~ 26. 10</dd>
+          <dt>제작 기간</dt><dd>2026. 08 ~ 2026. 10</dd>
         </dl>
       </div>
 
       <!-- ✏️ files 폴더에 넣은 PDF 파일 이름 (비워두면 PDF 영역이 숨겨짐)
            data-download: 다운로드될 때의 파일 이름 -->
-      <div class="pdf" data-src=""></div>
+      <div class="pdf" data-src="files/project-01.pdf" data-download="권나희-창작_Project Blackout.pdf"></div>
     </section>
 
     <!-- ===================== 프로젝트 B ===================== -->
     <section id="project-b" class="section">
       <p class="label">Project 02</p>
       <h2 class="title">[역기획 및 개선안 제시] Hogwarts Legacy - Spinner's Cavern</h2>
+      <ul class="tags">
+        <li>#호그와트_레거시</li><li>#판타지</li><li>#RPG</li><li>#3인칭</li><li>#동굴</li><li>#원거리_전투</li>
+      </ul>
       <p class="desc">주인공의 ‘필요의 방’을 관리해주는 요정 디크가 그의 친구 톱스의 안부를 확인해 달라고 부탁했다. 집요정 톱스는 주인을 위해 거머리 즙을 모으러 ‘회전 장치 동굴’로 보내졌다. 그를 만나기 위해 주인공은 동굴 깊숙이 들어간다.</p>
 
-      <div class="video" data-youtube="https://youtu.be/yrzPgaKFGqk"></div>
+      <div class="video" data-youtube="https://youtu.be/i_zhJRMx7UU"></div>
 
       <div class="details">
         <p class="label">Project Details</p>
@@ -87,11 +90,11 @@
           <dt>엔진</dt><dd>언리얼 엔진 5.6</dd>
           <dt>맵 크기</dt><dd>100 x 80 (m)</dd>
           <dt>플레이 타임</dt><dd>12분</dd>
-          <dt>제작 기간</dt><dd>26. 03 ~ 26. 06</dd>
+          <dt>제작 기간</dt><dd>2026. 03 ~ 2026. 06</dd>
         </dl>
       </div>
 
-      <div class="pdf" data-src="files/project-b.pdf" data-download="권나희-역기획 및 개선안 제시_Hogwarts Legacy-Spinner's Cavern.pdf"></div>
+      <div class="pdf" data-src="files/project-02.pdf" data-download="권나희-역기획 및 개선안 제시_Hogwarts Legacy-Spinner's Cavern.pdf"></div>
     </section>
 
     <!-- ===================== 자기소개 ===================== -->
@@ -115,6 +118,6 @@
 </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
