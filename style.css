@@ -106,7 +106,8 @@ a { color: inherit; text-decoration: none; }
 .name-main { display: block; width: fit-content; font-size: 44px; font-weight: 900; }
 /* 'Level Design / Portfolio': 민트색. 실제 크기는 script.js가
    'Level Design' 폭 = 'NAHEE KWON' 폭이 되도록 자동으로 맞춤 (아래 0.5em은 맞추기 전 임시값) */
-.name-role { display: block; width: fit-content; font-size: 0.3em; font-weight: 300; line-height: 1.45; color: var(--mint); }
+.name-role { display: block; width: fit-content; font-size: 0.3em; font-weight: 300; line-height: 1.45; color: var(--mint);
+  word-spacing: -0.2em; }  /* ✏️ 띄어쓰기 간격 (NAHEE KWON과 별도, 0 = 글꼴 기본 간격, 더 좁히려면 -0.05em 처럼 마이너스) */
 
 .nav { display: flex; flex-direction: column; gap: 16px; margin-top: 64px; }
 .nav a { align-self: flex-start; transition: color .2s; }
@@ -165,7 +166,7 @@ main {
 /* 태그가 없는 프로젝트로 넘어가도 높이가 출렁이지 않게 자리 확보 */
 .showcase-tags { min-height: 34px; margin-top: 12px; }
 
-/* 태그: 회색 알약 모양 + 민트 글씨 */
+/* 태그: 짙은 회색 알약 모양 + 연보라 기울임 글씨 */
 .tags {
   list-style: none;
   display: flex;
@@ -179,7 +180,8 @@ main {
   padding: 4px 14px;
   border-radius: 999px;
   background: #262626;
-  color: var(--mint);
+  color: #9990b5;
+  font-style: italic;
 }
 .section .tags { margin-top: 16px; }
 
@@ -192,8 +194,9 @@ main {
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-/* 프로젝트 페이지의 소제목(PROJECT 01, PROJECT DETAILS)은 민트색 */
-.section:not(.about) .label { color: var(--mint); }
+/* 프로젝트 페이지의 소제목(PROJECT 01, PROJECT DETAILS) 앞뒤에 ❖ 기호 */
+.section:not(.about) .label::before { content: "❖ "; }
+.section:not(.about) .label::after { content: " ❖"; }
 
 .desc { margin-top: 16px; }
 

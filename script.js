@@ -75,17 +75,20 @@ async function loadPdf(el) {
 
 // 홈 버튼: 'Level Design' 가로 길이가 'NAHEE KWON'을 넘지 않게 글자 크기 자동 조절
 // ✏️ ROLE_SCALE: 'NAHEE KWON' 폭에 꽉 맞춘 크기의 몇 배로 할지 (1 = 같은 폭)
-const ROLE_SCALE = 0.7;
+const ROLE_SCALE = 0.5;
 function fitLogo() {
   const main = document.querySelector('.name-main');
   const role = document.querySelector('.name-role');
   if (!main || !role) return;
   role.style.fontSize = '';
-  // 'Level Design' 한 줄만 재기 위해 잠깐 '<br>' 앞 글자만 남김
+  // 'Level Design' 부분만 재기 위해 잠깐 'Portfolio' 앞 글자만 남김
   const html = role.innerHTML;
   role.textContent = role.textContent.split('Portfolio')[0];
+  // 띄어쓰기를 넓혀도 글자 크기는 변하지 않도록, 잴 때만 'NAHEE KWON'과 같은 띄어쓰기로 잼
+  role.style.wordSpacing = 'inherit';
   const size = parseFloat(getComputedStyle(role).fontSize);
   const ratio = main.getBoundingClientRect().width / role.getBoundingClientRect().width;
+  role.style.wordSpacing = '';
   role.innerHTML = html;
   role.style.fontSize = Math.floor(size * ratio * ROLE_SCALE * 2) / 2 + 'px';
 }
