@@ -73,6 +73,25 @@ async function loadPdf(el) {
   }
 }
 
+// 홈 버튼: 'Level Design' 가로 길이가 'NAHEE KWON'을 넘지 않게 글자 크기 자동 조절
+// ✏️ ROLE_SCALE: 'NAHEE KWON' 폭에 꽉 맞춘 크기의 몇 배로 할지 (1 = 같은 폭)
+const ROLE_SCALE = 0.7;
+function fitLogo() {
+  const main = document.querySelector('.name-main');
+  const role = document.querySelector('.name-role');
+  if (!main || !role) return;
+  role.style.fontSize = '';
+  // 'Level Design' 한 줄만 재기 위해 잠깐 '<br>' 앞 글자만 남김
+  const html = role.innerHTML;
+  role.textContent = role.textContent.split('Portfolio')[0];
+  const size = parseFloat(getComputedStyle(role).fontSize);
+  const ratio = main.getBoundingClientRect().width / role.getBoundingClientRect().width;
+  role.innerHTML = html;
+  role.style.fontSize = Math.floor(size * ratio * ROLE_SCALE * 2) / 2 + 'px';
+}
+document.fonts.ready.then(fitLogo);
+window.addEventListener('resize', fitLogo);
+
 // 메인 썸네일: 자동으로 순서대로 전환, 메뉴에 마우스를 올리면 해당 썸네일 표시
 const thumbLinks = [...document.querySelectorAll('.nav a[data-thumb]')];
 const showcase = document.querySelector('.showcase');
@@ -81,6 +100,7 @@ if (showcase && thumbLinks.length) {
   const frame = showcase.querySelector('.showcase-frame');
   const label = showcase.querySelector('.label');
   const title = showcase.querySelector('.showcase-title');
+  const tags = showcase.querySelector('.showcase-tags');
   const imgs = thumbLinks.map(a => {
     const img = new Image();
     img.src = a.dataset.thumb;
@@ -98,6 +118,12 @@ if (showcase && thumbLinks.length) {
     showcase.setAttribute('href', a.getAttribute('href'));
     label.textContent = 'Project ' + String(i + 1).padStart(2, '0');
     title.textContent = a.dataset.title || a.textContent;
+    tags.innerHTML = '';
+    (a.dataset.tags || '').split(',').filter(t => t.trim()).forEach(t => {
+      const li = document.createElement('li');
+      li.textContent = '#' + t.trim();
+      tags.appendChild(li);
+    });
   }
 
   // 마지막으로 표시된 썸네일 다음부터 다시 순서대로
