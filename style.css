@@ -25,7 +25,7 @@
   --muted: #8c8c8c;
   --line: #242424;
   --mint: #78ffc9;    /* 메뉴 밑줄 */
-  --purple: #a187f0;  /* 태그 글씨, 프로젝트 분류 */
+  --purple: #9d8cd3;/* 태그 글씨, 프로젝트 분류 */
   --menu-font: "Presevka", "Pretendard", sans-serif;  /* 왼쪽 메뉴 영역 전체 */
   --sidebar-w: 320px;
   --page-w: 1920px;   /* 이보다 넓은 화면에서는 이 폭으로 가운데 정렬 */
@@ -444,7 +444,9 @@ main {
   .showcase-caption { flex-direction: column; gap: 2px; margin-top: 14px; }
   .section { padding: 40px 0 56px; }
   .about-name span { display: block; margin: 4px 0 0; }
-  .title .kind { display: block; margin: 4px 0 0; }  /* 분류는 제목 아랫줄로 */
+  /* 분류는 제목 아랫줄로. 글자 안에서 줄바꿈해서 줄 간격이 제목 두 줄일 때와 똑같음 */
+  .title .kind { margin-left: 0; }
+  .title .kind::before { content: "\A"; white-space: pre; }
   .pdf-bar { flex-direction: column; align-items: flex-start; }
   .video, .pdf, .details, .preview, .block { margin-top: 64px; }
   .block > .video, .block > .pdf { margin-top: 0; }

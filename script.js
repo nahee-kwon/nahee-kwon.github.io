@@ -139,6 +139,14 @@ function fitLogo() {
   const role = document.querySelector('.name-role');
   if (!main || !role) return;
   role.style.fontSize = '';
+  main.style.fontSize = '';
+  // 모바일: 반대로 'NAHEE KWON'을 키워서 'Level Design Portfolio' 전체 폭과 똑같이 맞춤
+  if (window.matchMedia('(max-width: 860px)').matches) {
+    const base = parseFloat(getComputedStyle(main).fontSize);
+    const scale = role.getBoundingClientRect().width / main.getBoundingClientRect().width;
+    main.style.fontSize = (base * scale).toFixed(2) + 'px';
+    return;
+  }
   // 'Level Design' 부분만 재기 위해 잠깐 'Portfolio' 앞 글자만 남김
   const html = role.innerHTML;
   role.textContent = role.textContent.split('Portfolio')[0];
@@ -151,6 +159,7 @@ function fitLogo() {
   role.style.fontSize = Math.floor(size * ratio * ROLE_SCALE * 2) / 2 + 'px';
 }
 document.fonts.ready.then(fitLogo);
+document.fonts.addEventListener('loadingdone', fitLogo);  // 글꼴이 늦게 도착해도 다시 맞춤
 window.addEventListener('resize', fitLogo);
 
 // 프로젝트 페이지 태그: 맨 앞 '#'만 따로 감싸서 기울임 적용 (index.html에는 '#잠입'처럼 그대로 적으면 됨)
