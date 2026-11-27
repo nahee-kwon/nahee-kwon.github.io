@@ -25,6 +25,7 @@
   --muted: #8c8c8c;
   --line: #242424;
   --mint: #78ffc9;    /* 메뉴 밑줄 */
+  --purple: #a187f0;  /* 태그 글씨, 프로젝트 분류 */
   --menu-font: "Presevka", "Pretendard", sans-serif;  /* 왼쪽 메뉴 영역 전체 */
   --sidebar-w: 320px;
   --page-w: 1920px;   /* 이보다 넓은 화면에서는 이 폭으로 가운데 정렬 */
@@ -175,7 +176,7 @@ main {
 .showcase-caption.has-kind .label {
   order: 1;  /* 제목 뒤로 보냄 */
   font-family: inherit;
-  color: var(--mint);
+  color: var(--purple);
 }
 .showcase-caption.has-kind .showcase-title {
   font-size: calc(var(--fs-text) * 2);
@@ -199,7 +200,7 @@ main {
   padding: 4px 14px;
   border-radius: 999px;
   background: #262626;
-  color: #9990b5;
+  color: var(--purple);
 }
 /* '#' 기호만 기울임 + 뒤 글자와 살짝 띄움 (✏️ 0.15em: 띄어쓰기의 절반 정도) */
 .tags .hash { font-style: italic; margin-right: 0.15em; }
@@ -222,12 +223,12 @@ main {
 
 /* ✏️ 프로젝트 페이지 제목만 1.5배 (PC 54px, 모바일 39px) */
 .section .title { font-size: calc(var(--fs-title) * 1.5); }
-/* 제목 뒤 분류('|  창작 프로젝트'): 24px(✏️ 모바일은 20px), 보통 굵기, 민트색 */
+/* 제목 뒤 분류('|  창작 프로젝트'): 24px(✏️ 모바일은 20px), 보통 굵기, 보라색 */
 .title .kind {
   font-size: calc(var(--fs-text) * 4 / 3);
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--mint);
+  color: var(--purple);
   margin-left: 20px;  /* ✏️ 제목과 '|' 사이 간격 */
 }
 
