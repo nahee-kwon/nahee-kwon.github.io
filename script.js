@@ -233,6 +233,18 @@ if (showcase && thumbLinks.length) {
   start();
 }
 
+// 모바일 'PROJECT' 드롭다운: 누르면 열고 닫기, 항목이나 바깥을 누르면 닫기
+const navGroup = document.querySelector('.nav-group');
+const navToggle = document.querySelector('.nav-toggle');
+function setMenu(open) {
+  navGroup.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+}
+navToggle.addEventListener('click', () => setMenu(!navGroup.classList.contains('open')));
+document.addEventListener('click', e => {
+  if (!navToggle.contains(e.target)) setMenu(false);
+});
+
 // 페이지 전환: 주소의 #project-a 등에 맞는 페이지만 표시 (없으면 홈)
 const pageEls = [...document.querySelectorAll('main section[id]')];
 const links = document.querySelectorAll('.nav a');
@@ -249,6 +261,8 @@ function route() {
     p.hidden = p !== current;
   });
   links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  navToggle.classList.toggle('active', !!navGroup.querySelector('a.active'));
+  setMenu(false);
 
   // 홈 썸네일 동영상: 홈에 있을 때만 재생
   document.querySelectorAll('.showcase-frame video').forEach(v => {

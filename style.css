@@ -121,6 +121,10 @@ a { color: inherit; text-decoration: none; }
   text-underline-offset: 6px;
 }
 
+/* PC에서는 묶음 상자가 없는 것처럼 취급하고 'PROJECT' 버튼은 숨김 (모바일 전용) */
+.nav-group, .nav-sub { display: contents; }
+.nav-toggle { display: none; }
+
 .side-mail { margin-top: auto; word-break: break-all; }
 .side-mail:hover { color: var(--text); }
 
@@ -391,17 +395,46 @@ main {
   .sidebar {
     width: 100%;
     height: auto;
-    padding: 16px 20px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    padding: 20px 20px 6px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
-  .name-ko, .name-main { font-size: 15px; line-height: 1.35; }
+  /* 모바일 상단: 윗줄 = 이름, 아랫줄 = 메뉴 */
+  .logo { align-self: flex-start; }
+  .name-ko, .name-main { font-size: 26px; line-height: 1.25; }
+  .logo .name-role { font-size: 13px !important; }  /* script.js의 자동 크기 대신 고정 */
   .side-mail { display: none; }
-  .nav { flex-direction: row; gap: 14px; margin-top: 0; }
-  .nav a { font-size: 13px; }
+  .nav { flex-direction: row; align-items: center; gap: 32px; margin-top: 14px; }
+  .nav a, .nav-toggle { font-size: var(--fs-text); line-height: 1.7; padding: 8px 0; }
+
+  /* PROJECT 드롭다운 */
+  .nav-group { display: block; position: relative; }
+  .nav-toggle {
+    display: block;
+    border: 0; background: none; cursor: pointer;
+    font-family: var(--menu-font);
+    color: var(--muted);
+  }
+  .nav-toggle::after {
+    content: ""; display: inline-block;
+    margin-left: 8px; vertical-align: middle;
+    border: 5px solid transparent; border-top-color: currentColor; border-bottom: 0;
+    transition: transform .2s;
+  }
+  .nav-group.open .nav-toggle::after { transform: rotate(180deg); }
+  .nav-group.open .nav-toggle, .nav-toggle.active { color: var(--text); }
+  .nav-toggle.active { text-decoration: underline; text-decoration-color: var(--mint); text-underline-offset: 6px; }
+  .nav-sub {
+    display: none;
+    position: absolute; top: 100%; left: -14px;
+    flex-direction: column;
+    min-width: 220px; padding: 6px 0;
+    background: #141414;
+    border: 1px solid var(--line);
+  }
+  .nav-group.open .nav-sub { display: flex; }
+  .nav-sub a { align-self: stretch; padding: 12px 18px; white-space: nowrap; }
+  .nav-prefix { display: none; }
 
   main { padding: 0 16px; }
   main { min-height: auto; }
@@ -410,6 +443,7 @@ main {
   .showcase-caption { flex-direction: column; gap: 2px; margin-top: 14px; }
   .section { padding: 40px 0 56px; }
   .about-name span { display: block; margin: 4px 0 0; }
+  .title .kind { display: block; margin: 4px 0 0; }  /* 분류는 제목 아랫줄로 */
   .pdf-bar { flex-direction: column; align-items: flex-start; }
   .video, .pdf, .details, .preview, .block { margin-top: 64px; }
   .block > .video, .block > .pdf { margin-top: 0; }

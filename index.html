@@ -7,7 +7,7 @@
   <meta name="description" content="권나희 포트폴리오">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <!-- ✏️ style.css / script.js 를 수정해서 올릴 때마다 v= 숫자를 하나씩 올리기 (브라우저 캐시 방지) -->
-  <link rel="stylesheet" href="style.css?v=35">
+  <link rel="stylesheet" href="style.css?v=37">
 </head>
 <body>
 <div class="page">
@@ -21,9 +21,16 @@
          data-title: 썸네일 아래 제목 / data-kind: 분류(선택). 있으면 'PROJECT 00' 없이 '제목(크게) | 분류'로 표시
          data-tags: 썸네일 아래 태그 (쉼표로 구분, # 없이) -->
     <nav class="nav">
-      <a href="#project-a" data-thumb="files/thumb-01.jpg" data-kind="창작 프로젝트" data-title="Project Blackout" data-tags="잠입,슈팅,3인칭,액션,어둠과_빛,현대,지하철역">PROJECT: BLACKOUT</a>
-      <a href="#project-c" data-thumb="files/thumb-03.jpg" data-kind="창작 프로젝트" data-title="Project Harbor" data-tags="쿼터뷰,핵앤슬래쉬,액션_RPG,판타지,항구,마누엘린">PROJECT: HARBOR</a>
-      <a href="#project-b" data-thumb="files/thumb-02.jpg" data-kind="역기획 및 개선안 제시" data-title="Hogwarts Legacy - Spinner's Cavern" data-tags="호그와트_레거시,판타지,RPG,3인칭,동굴,원거리_전투">PROJECT: HOGWARTS LEGACY</a>
+      <!-- nav-group: 모바일에서는 'PROJECT' 버튼 하나로 묶이고, 누르면 아래로 펼쳐짐 (PC에서는 그대로 3줄)
+           nav-prefix: 모바일 목록에서 숨겨지는 'PROJECT: ' 부분 -->
+      <div class="nav-group">
+      <button class="nav-toggle" type="button" aria-expanded="false">PROJECT</button>
+      <div class="nav-sub">
+      <a href="#project-a" data-thumb="files/thumb-01.jpg" data-kind="창작 프로젝트" data-title="Project Blackout" data-tags="잠입,슈팅,3인칭,액션,어둠과_빛,현대,지하철역"><span class="nav-prefix">PROJECT: </span>BLACKOUT</a>
+      <a href="#project-c" data-thumb="files/thumb-03.jpg" data-kind="창작 프로젝트" data-title="Project Harbor" data-tags="쿼터뷰,핵앤슬래쉬,액션_RPG,판타지,항구,마누엘린"><span class="nav-prefix">PROJECT: </span>HARBOR</a>
+      <a href="#project-b" data-thumb="files/thumb-02.jpg" data-kind="역기획 및 개선안 제시" data-title="Hogwarts Legacy - Spinner's Cavern" data-tags="호그와트_레거시,판타지,RPG,3인칭,동굴,원거리_전투"><span class="nav-prefix">PROJECT: </span>HOGWARTS LEGACY</a>
+      </div>
+      </div>
       <a href="#about">ABOUT</a>
     </nav>
     <a class="side-mail" href="mailto:kwonnh169@gmail.com">kwonnh169@gmail.com</a>
@@ -209,6 +216,6 @@
 </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="script.js?v=18"></script>
+  <script src="script.js?v=19"></script>
 </body>
 </html>
