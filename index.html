@@ -7,7 +7,7 @@
   <meta name="description" content="권나희 포트폴리오">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <!-- ✏️ style.css / script.js 를 수정해서 올릴 때마다 v= 숫자를 하나씩 올리기 (브라우저 캐시 방지) -->
-  <link rel="stylesheet" href="style.css?v=27">
+  <link rel="stylesheet" href="style.css?v=35">
 </head>
 <body>
 <div class="page">
@@ -17,12 +17,13 @@
     <a href="#home" class="logo">
       <span class="name-ko"><span class="name-main">NAHEE KWON</span><span class="name-role">Level Design Portfolio</span></span>
     </a>
-    <!-- ✏️ data-thumb: 메인 화면 썸네일 / data-title: 썸네일 아래 제목
+    <!-- ✏️ data-thumb: 메인 화면 썸네일 / data-video: 썸네일 대신 재생할 동영상(선택, 있으면 data-thumb은 로딩 중 표시용)
+         data-title: 썸네일 아래 제목 / data-kind: 분류(선택). 있으면 'PROJECT 00' 없이 '제목(크게) | 분류'로 표시
          data-tags: 썸네일 아래 태그 (쉼표로 구분, # 없이) -->
     <nav class="nav">
-      <a href="#project-a" data-thumb="files/thumb-01.jpg" data-title="[창작] Project Blackout" data-tags="잠입,슈팅,3인칭,액션,어둠과_빛,현대,지하철역">PROJECT: BLACKOUT</a>
-      <a href="#project-c" data-thumb="files/thumb-03.jpg" data-title="[창작] Project Harbor" data-tags="쿼터뷰,핵앤슬래쉬,액션_RPG,판타지,항구,마누엘린">PROJECT: HARBOR</a>
-      <a href="#project-b" data-thumb="files/thumb-02.jpg" data-title="[역기획 및 개선안 제시] Hogwarts Legacy - Spinner's Cavern" data-tags="호그와트_레거시,판타지,RPG,3인칭,동굴,원거리_전투">PROJECT: HOGWARTS LEGACY</a>
+      <a href="#project-a" data-thumb="files/thumb-01.jpg" data-kind="창작 프로젝트" data-title="Project Blackout" data-tags="잠입,슈팅,3인칭,액션,어둠과_빛,현대,지하철역">PROJECT: BLACKOUT</a>
+      <a href="#project-c" data-thumb="files/thumb-03.jpg" data-kind="창작 프로젝트" data-title="Project Harbor" data-tags="쿼터뷰,핵앤슬래쉬,액션_RPG,판타지,항구,마누엘린">PROJECT: HARBOR</a>
+      <a href="#project-b" data-thumb="files/thumb-02.jpg" data-kind="역기획 및 개선안 제시" data-title="Hogwarts Legacy - Spinner's Cavern" data-tags="호그와트_레거시,판타지,RPG,3인칭,동굴,원거리_전투">PROJECT: HOGWARTS LEGACY</a>
       <a href="#about">ABOUT</a>
     </nav>
     <a class="side-mail" href="mailto:kwonnh169@gmail.com">kwonnh169@gmail.com</a>
@@ -44,17 +45,13 @@
 
     <!-- ===================== 프로젝트 A ===================== -->
     <section id="project-a" class="section">
-      <p class="label">Project 01</p>
       <!-- ✏️ 제목 / 설명 수정 -->
-      <h2 class="title">[창작] Project Blackout</h2>
+      <h2 class="title">Project Blackout<span class="kind">|&nbsp;&nbsp;창작 프로젝트</span></h2>
+      <p class="desc">한밤의 정전으로 봉쇄된 환승역. 최하층의 차량 내부에서 깨어난 주인공 ‘K’는 조력자의 무전을 받고 순찰자를 피해 전원을 복구, 새벽빛을 받아 밝아진 역을 거슬러 올라 지상으로 탈출한다.</p>
       <!-- ✏️ 태그 (메뉴의 data-tags 와 같게 맞추기) -->
       <ul class="tags">
         <li>#잠입</li><li>#슈팅</li><li>#3인칭</li><li>#액션</li><li>#어둠과_빛</li><li>#현대</li><li>#지하철역</li>
       </ul>
-      <p class="desc">한밤의 정전으로 봉쇄된 환승역. 최하층의 차량 내부에서 깨어난 주인공 ‘K’는 조력자의 무전을 받고 순찰자를 피해 전원을 복구, 새벽빛을 받아 밝아진 역을 거슬러 올라 지상으로 탈출한다.</p>
-
-      <!-- ✏️ 유튜브 주소를 그대로 붙여넣기 (youtu.be/..., youtube.com/watch?v=... 모두 가능) -->
-      <div class="video" data-youtube="https://youtu.be/mhJwyw-_eXg"></div>
 
       <!-- ✏️ 프로젝트 정보 (항목 이름은 dt, 내용은 dd) -->
       <div class="details">
@@ -68,21 +65,42 @@
         </dl>
       </div>
 
+      <!-- ✏️ 미리보기: 파일 경로를 쉼표로 구분해서 순서대로 (.mp4는 자동 재생 동영상, 나머지는 이미지) -->
+      <div class="preview">
+        <p class="label">Preview</p>
+        <div class="preview-body" data-items="
+          files/project_blackout/trailer.mp4,
+          files/project_blackout/preview-1.jpg,
+          files/project_blackout/preview-2.jpg,
+          files/project_blackout/preview-3.jpg,
+          files/project_blackout/preview-4.jpg,
+          files/project_blackout/preview-5.jpg,
+          files/project_blackout/preview-6.jpg,
+          files/project_blackout/preview-7.jpg,
+          files/project_blackout/preview-8.jpg"></div>
+      </div>
+
+      <!-- ✏️ 유튜브 주소를 그대로 붙여넣기 (youtu.be/..., youtube.com/watch?v=... 모두 가능) -->
+      <div class="block">
+        <p class="label">Playing Video</p>
+        <div class="video" data-youtube="https://youtu.be/mhJwyw-_eXg"></div>
+      </div>
+
       <!-- ✏️ files 폴더에 넣은 PDF 파일 이름 (비워두면 PDF 영역이 숨겨짐)
            data-download: 다운로드될 때의 파일 이름 -->
-      <div class="pdf" data-src="files/project-01.pdf" data-download="권나희-창작_Project Blackout.pdf"></div>
+      <div class="block">
+        <p class="label">Design Document</p>
+        <div class="pdf" data-src="files/project-01.pdf" data-download="권나희-창작_Project Blackout.pdf"></div>
+      </div>
     </section>
 
     <!-- ===================== 프로젝트 02: Harbor (주소 #project-c) ===================== -->
     <section id="project-c" class="section">
-      <p class="label">Project 02</p>
-      <h2 class="title">[창작] Project Harbor</h2>
+      <h2 class="title">Project Harbor<span class="kind">|&nbsp;&nbsp;창작 프로젝트</span></h2>
+      <p class="desc">신비한 유물을 보유한 작은 항구 마을, 축제를 준비하던 마을은 해적의 습격으로 전장이 되어버렸다. 주인공은 낮에 축제 준비를 돕던 공간을 반대 방향으로 되짚어 가며 마을을 지켜낸다.</p>
       <ul class="tags">
         <li>#쿼터뷰</li><li>#핵앤슬래쉬</li><li>#액션_RPG</li><li>#판타지</li><li>#항구</li><li>#마누엘린</li>
       </ul>
-      <p class="desc">신비한 유물을 보유한 작은 항구 마을, 축제를 준비하던 마을은 해적의 습격으로 전장이 되어버렸다. 주인공은 낮에 축제 준비를 돕던 공간을 반대 방향으로 되짚어 가며 마을을 지켜낸다.</p>
-
-      <div class="video" data-youtube="https://youtu.be/_XwHPCksuiM"></div>
 
       <div class="details">
         <p class="label">Project Details</p>
@@ -95,20 +113,42 @@
         </dl>
       </div>
 
-      <!-- ✏️ PDF가 준비되면 files/project-03.pdf 로 넣고 data-src="files/project-03.pdf" 로 바꾸기 -->
-      <div class="pdf" data-src="" data-download="권나희-창작_Project Harbor.pdf"></div>
+      <div class="preview">
+        <p class="label">Preview</p>
+        <div class="preview-body" data-items="
+          files/project_harbor/trailer.mp4,
+          files/project_harbor/preview-1.jpg,
+          files/project_harbor/preview-2.jpg,
+          files/project_harbor/preview-3.jpg,
+          files/project_harbor/preview-4.jpg,
+          files/project_harbor/preview-5.jpg,
+          files/project_harbor/preview-6.jpg,
+          files/project_harbor/preview-7.jpg,
+          files/project_harbor/preview-8.jpg,
+          files/project_harbor/preview-9.jpg,
+          files/project_harbor/preview-10.jpg"></div>
+      </div>
+
+      <div class="block">
+        <p class="label">Playing Video</p>
+        <div class="video" data-youtube="https://youtu.be/_XwHPCksuiM"></div>
+      </div>
+
+      <!-- ✏️ PDF가 준비되면 files/project-03.pdf 로 넣고 data-src="files/project-03.pdf" 로 바꾸기
+           (비어 있는 동안은 'Design Document' 제목까지 숨겨짐) -->
+      <div class="block">
+        <p class="label">Design Document</p>
+        <div class="pdf" data-src="" data-download="권나희-창작_Project Harbor.pdf"></div>
+      </div>
     </section>
 
     <!-- ===================== 프로젝트 03: Hogwarts Legacy (주소 #project-b) ===================== -->
     <section id="project-b" class="section">
-      <p class="label">Project 03</p>
-      <h2 class="title">[역기획 및 개선안 제시] Hogwarts Legacy - Spinner's Cavern</h2>
+      <h2 class="title">Hogwarts Legacy - Spinner's Cavern<span class="kind">|&nbsp;&nbsp;역기획 및 개선안 제시</span></h2>
+      <p class="desc">주인공의 ‘필요의 방’을 관리해주는 요정 디크가 그의 친구 톱스의 안부를 확인해 달라고 부탁했다. 집요정 톱스는 주인을 위해 거머리 즙을 모으러 ‘회전 장치 동굴’로 보내졌다. 그를 만나기 위해 주인공은 동굴 깊숙이 들어간다.</p>
       <ul class="tags">
         <li>#호그와트_레거시</li><li>#판타지</li><li>#RPG</li><li>#3인칭</li><li>#동굴</li><li>#원거리_전투</li>
       </ul>
-      <p class="desc">주인공의 ‘필요의 방’을 관리해주는 요정 디크가 그의 친구 톱스의 안부를 확인해 달라고 부탁했다. 집요정 톱스는 주인을 위해 거머리 즙을 모으러 ‘회전 장치 동굴’로 보내졌다. 그를 만나기 위해 주인공은 동굴 깊숙이 들어간다.</p>
-
-      <div class="video" data-youtube="https://youtu.be/yrzPgaKFGqk"></div>
 
       <div class="details">
         <p class="label">Project Details</p>
@@ -121,7 +161,31 @@
         </dl>
       </div>
 
-      <div class="pdf" data-src="files/project-02.pdf" data-download="권나희-역기획 및 개선안 제시_Hogwarts Legacy-Spinner's Cavern.pdf"></div>
+      <div class="preview">
+        <p class="label">Preview</p>
+        <div class="preview-body" data-items="
+          files/project_hogwarts/trailer.mp4,
+          files/project_hogwarts/preview-1.jpg,
+          files/project_hogwarts/preview-2.jpg,
+          files/project_hogwarts/preview-3.jpg,
+          files/project_hogwarts/preview-4.jpg,
+          files/project_hogwarts/preview-5.jpg,
+          files/project_hogwarts/preview-6.jpg,
+          files/project_hogwarts/preview-7.jpg,
+          files/project_hogwarts/preview-8.jpg,
+          files/project_hogwarts/preview-9.jpg,
+          files/project_hogwarts/preview-10.jpg"></div>
+      </div>
+
+      <div class="block">
+        <p class="label">Playing Video</p>
+        <div class="video" data-youtube="https://youtu.be/yrzPgaKFGqk"></div>
+      </div>
+
+      <div class="block">
+        <p class="label">Design Document</p>
+        <div class="pdf" data-src="files/project-02.pdf" data-download="권나희-역기획 및 개선안 제시_Hogwarts Legacy-Spinner's Cavern.pdf"></div>
+      </div>
     </section>
 
     <!-- ===================== 자기소개 ===================== -->
@@ -145,6 +209,6 @@
 </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=18"></script>
 </body>
 </html>
